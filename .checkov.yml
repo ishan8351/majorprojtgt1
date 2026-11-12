@@ -1,0 +1,19 @@
+# Checkov Static Analysis Configuration for Healthcare ePHI Lake
+framework:
+  - terraform
+
+check:
+  - CKV_AWS_16   # RDS Storage Encryption
+  - CKV_AWS_19   # S3 Server-Side Encryption
+  - CKV_AWS_21   # S3 Object Versioning
+  - CKV_AWS_23   # Security Group Description
+  - CKV_AWS_24   # Security Group SSH Port 22
+  - CKV_AWS_36   # CloudTrail KMS Encryption
+  - CKV_AWS_40   # IAM Least Privilege Wildcards
+  - CKV_AWS_79   # EC2 IMDSv2 Enforcement
+  - CKV_AWS_145  # S3 KMS CMK Encryption
+  - CKV_AWS_157  # RDS Multi-AZ
+
+compact: true
+quiet: true
+output: json

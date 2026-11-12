@@ -1,0 +1,32 @@
+# RegRadar Configuration for Healthcare AI & Genomic Telemedicine Data Lake
+# Optimized for HIPAA §164.312, HITRUST CSF, and GDPR Article 9 compliance.
+
+workspace:
+  root: "."
+  scan_paths:
+    - "."
+
+centrality:
+  weights:
+    descendant_ratio: 0.45
+    betweenness: 0.25
+    eigenvector: 0.20
+    out_degree_ratio: 0.10
+  thresholds:
+    critical_root_score: 0.30
+    critical_root_descendant_ratio: 0.25
+    intermediate_score: 0.10
+  solver:
+    max_iter: 2000
+    tol: 0.000001
+
+llm:
+  provider: "mock"
+  swarm:
+    max_retries: 3
+    temperature: 0.0
+    deterministic: true
+
+sandbox:
+  binary_name: "tofu"
+  mock_aws_region: "us-east-1"

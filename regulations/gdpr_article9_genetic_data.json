@@ -1,0 +1,34 @@
+{
+  "regulation": "GDPR",
+  "article": "Article 9",
+  "title": "Processing of Special Categories of Personal Data (Genetic Data, Biometric Data, and Data Concerning Health)",
+  "jurisdiction": "European Union / European Economic Area",
+  "clauses": [
+    {
+      "clause": "Article 9(1)",
+      "mandate": "Processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health shall be prohibited unless specific derogations apply.",
+      "security_measures": [
+        "Cryptographic isolation of genetic sequences from demographic identifiers",
+        "Dedicated Customer Managed Key (CMK) envelopes for DNA repositories",
+        "Zero unencrypted data transmission across perimeter boundaries"
+      ],
+      "mapped_resources": [
+        "aws_s3_bucket.raw_genomics_lake",
+        "aws_kms_key.genomic_kms_key",
+        "aws_security_group.genomic_ai_sg"
+      ]
+    },
+    {
+      "clause": "Article 32(1)(a)",
+      "mandate": "The controller and the processor shall implement appropriate technical and organisational measures including pseudonymisation and encryption of personal data.",
+      "security_measures": [
+        "Default server-side encryption with AES-256 or AWS KMS",
+        "Immutable versioning for continuous data integrity verification"
+      ],
+      "mapped_resources": [
+        "aws_s3_bucket.clinical_research_lake",
+        "aws_db_instance.ephi_postgresql_db"
+      ]
+    }
+  ]
+}

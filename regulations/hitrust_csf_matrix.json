@@ -1,0 +1,43 @@
+{
+  "framework": "HITRUST CSF",
+  "version": "v11.0",
+  "title": "Health Information Trust Alliance Common Security Framework Controls",
+  "domains": [
+    {
+      "domain_id": "01.0",
+      "name": "Information Protection Program",
+      "controls": [
+        {
+          "control_ref": "01.i",
+          "title": "Cryptographic Key Management",
+          "mandate": "Cryptographic keys shall be managed through a centralized key management system supporting key generation, distribution, and automated annual rotation.",
+          "target_resources": ["aws_kms_key.ephi_kms_key", "aws_kms_key.genomic_kms_key"]
+        },
+        {
+          "control_ref": "01.m",
+          "title": "Data Protection at Rest",
+          "mandate": "Sensitive data at rest including electronic protected health information must be encrypted using industry-standard algorithms (AES-256 or RSA-2048+).",
+          "target_resources": ["aws_db_instance.ephi_postgresql_db", "aws_s3_bucket.raw_genomics_lake"]
+        }
+      ]
+    },
+    {
+      "domain_id": "09.0",
+      "name": "Communications and Operations Management",
+      "controls": [
+        {
+          "control_ref": "09.aa",
+          "title": "Audit Logging and Telemetry",
+          "mandate": "Audit trails recording exceptions, security-relevant events, and administrative activities shall be generated and kept for at least one year.",
+          "target_resources": ["aws_cloudtrail.hipaa_cloudtrail", "aws_s3_bucket.hipaa_audit_logs"]
+        },
+        {
+          "control_ref": "09.f",
+          "title": "Backup and Disaster Recovery",
+          "mandate": "Backup copies of data, software, and system images shall be taken and tested regularly.",
+          "target_resources": ["aws_s3_bucket.clinical_research_lake", "aws_s3_bucket.raw_genomics_lake"]
+        }
+      ]
+    }
+  ]
+}
